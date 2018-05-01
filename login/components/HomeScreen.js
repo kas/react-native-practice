@@ -19,9 +19,13 @@ export default class extends React.Component {
     };
   };
 
-  state = {
-    count: 0,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 0,
+    };
+  }
 
   componentWillMount() {
     this.props.navigation.setParams({ increaseCount: this.increaseCount });
