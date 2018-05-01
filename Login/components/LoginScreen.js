@@ -11,13 +11,10 @@ export default class extends React.Component {
     header: null,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      password: '',
-      username: '',
-    };
-  }
+  state = {
+    password: '',
+    username: '',
+  };
 
   onPressSignUp = () => {
     this.props.navigation.navigate('SignUp');
