@@ -6,6 +6,6 @@ This project demonstrates a login flow. It starts in `AuthLoadingScreen`, which 
 
 ![](https://raw.githubusercontent.com/kas/react-native-practice/master/Login/images/LoginScreen.png)
 
-![](https://raw.githubusercontent.com/kas/react-native-practice/master/Login/images/HomeScreenAuthenticationFailed.png)
+![](https://raw.githubusercontent.com/kas/react-native-practice/master/Login/images/LoginScreenAuthenticationFailed.png)
 
 ![](https://raw.githubusercontent.com/kas/react-native-practice/master/Login/images/HomeScreen.png)
