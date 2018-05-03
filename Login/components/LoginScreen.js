@@ -45,7 +45,7 @@ export default class extends React.Component {
 
   render() {
     return (
-      <View style={AppStyle.container}>
+      <View style={AppStyle.view}>
         <Text>Username</Text>
         <TextInput
           autoCapitalize="none"
