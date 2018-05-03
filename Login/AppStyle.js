@@ -2,18 +2,18 @@ import { StyleSheet } from 'react-native';
 
 const AppStyle = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
+    backgroundColor: '#fff',
+    flex: 1,
     justifyContent: 'center',
-  },
-  loginScreenToast: {
-    backgroundColor: 'red',
-    // backgroundColor: 'orange',
   },
   loginScreenTextInput: {
     height: 40,
     width: 150,
+  },
+  loginScreenToast: {
+    // backgroundColor: 'orange',
+    backgroundColor: 'red',
   },
   modalScreenText: {
     fontSize: 30,
