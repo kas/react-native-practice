@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ActivityIndicator, AsyncStorage, StatusBar, View } from 'react-native';
+import { ActivityIndicator, AsyncStorage, View } from 'react-native';
 
 import AppStyle from '../AppStyle';
 
@@ -19,7 +19,6 @@ export default class extends React.Component {
     return (
       <View style={AppStyle.view}>
         <ActivityIndicator />
-        <StatusBar barStyle="default" />
       </View>
     );
   }
