@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, View } from 'react-native';
 
 import Pokemon from './Pokemon';
 import SomethingWentWrong from './SomethingWentWrong';
