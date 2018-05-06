@@ -1,20 +1,20 @@
-// TODO show more pokemon via next property
-
 import React from 'react';
 
-import { ActivityIndicator, FlatList, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 
 import Pokemon from './Pokemon';
 import SomethingWentWrong from './SomethingWentWrong';
 
 import AppStyle from '../AppStyle';
 
+const DEFAULT_API_URL = 'https://pokeapi.co/api/v2/pokemon';
+
 export default class extends React.Component {
   static navigationOptions = {
     title: 'Pokemon',
   };
 
-  state = { isLoading: true, pokemon: [] };
+  state = { isLoading: true, nextApiUrl: '', pokemon: [] };
 
   componentDidMount() {
     this.getPokemonFromApi();
@@ -24,12 +24,23 @@ export default class extends React.Component {
     this.props.navigation.navigate('Detail', { name: pokemon.name, url: pokemon.url });
   };
 
-  getPokemonFromApi = async () => {
-    this.setState({ isLoading: true });
+  onEndReached = () => {
+    this.getPokemonFromApi(this.state.nextApiUrl);
+  };
+
+  getPokemonFromApi = async (url = DEFAULT_API_URL) => {
+    if (url === DEFAULT_API_URL) {
+      this.setState({ isLoading: true });
+    }
+
     try {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon');
+      const response = await fetch(url);
       const responseJson = await response.json();
-      this.setState({ isLoading: false, pokemon: responseJson.results });
+      this.setState(state => ({
+        isLoading: false,
+        nextApiUrl: responseJson.next,
+        pokemon: [...state.pokemon, ...responseJson.results],
+      }));
     } catch (error) {
       console.error(error);
       this.setState({ isLoading: false });
@@ -57,7 +68,13 @@ export default class extends React.Component {
 
     return (
       <View style={AppStyle.listViewScreenView}>
-        <FlatList data={this.state.pokemon} renderItem={this.renderItem} />;
+        <FlatList
+          data={this.state.pokemon}
+          keyExtractor={pokemon => pokemon.name}
+          onEndReached={this.onEndReached}
+          onEndReachedThreshold={0}
+          renderItem={this.renderItem}
+        />;
       </View>
     );
   }
